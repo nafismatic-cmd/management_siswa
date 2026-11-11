@@ -1,58 +1,147 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<div align="center">
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# 📚 Aplikasi Manajemen Siswa
 
-## About Laravel
+Aplikasi web untuk mengelola data siswa (CRUD) yang dibuat dengan **Laravel**.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+</div>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 📖 Tentang Project
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Aplikasi ini dibuat untuk memudahkan pengelolaan data siswa di sekolah. Data siswa dapat ditambah, diubah, dan dihapus melalui tampilan dashboard yang modern dan mudah digunakan. Project ini dibuat sebagai tugas Pemrograman Web.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## ✨ Fitur
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+- ➕ **Insert** – menambah data siswa baru
+- ✏️ **Update** – mengubah data siswa
+- 🗑️ **Delete** – menghapus satu data siswa
+- ☑️ **Hapus massal** – menghapus beberapa siswa sekaligus lewat checkbox
+- 🔍 **Pencarian** – cari berdasarkan nama, NIS, atau kelas
+- 🗂️ **Filter tab** – Semua / Laki-laki / Perempuan beserta jumlahnya
+- 📄 **Pagination** – data dibagi per halaman (10 data)
+- ✅ **Validasi form** – NIS dan email tidak boleh ganda
+- 📱 **Responsif** – nyaman dibuka di laptop maupun HP
 
-## Agentic Development
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## 🛠️ Teknologi
 
-```bash
-composer require laravel/boost --dev
+| Teknologi | Kegunaan |
+|---|---|
+| Laravel | Framework backend (pola MVC) |
+| PHP 8.2+ | Bahasa pemrograman |
+| MySQL | Database |
+| Blade | Template engine |
+| Bootstrap 5 & Bootstrap Icons | Tampilan antarmuka |
 
-php artisan boost:install
+## 🚀 Cara Menjalankan
+
+### Kebutuhan
+
+- PHP 8.2 atau lebih baru
+- Composer
+- MySQL (XAMPP / Laragon)
+
+### Instalasi
+
+1. **Clone repository**
+
+   ```bash
+   git clone https://github.com/USERNAME/NAMA-REPOSITORY.git
+   cd NAMA-REPOSITORY
+   ```
+
+2. **Install dependency**
+
+   ```bash
+   composer install
+   ```
+
+3. **Salin file environment dan buat app key**
+
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+
+   (Di Windows CMD, gunakan `copy .env.example .env`.)
+
+4. **Buat database** bernama `db_siswa` di phpMyAdmin, lalu atur `.env`:
+
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=db_siswa
+   DB_USERNAME=root
+   DB_PASSWORD=
+   ```
+
+5. **Jalankan migration**
+
+   ```bash
+   php artisan migrate
+   ```
+
+6. **Jalankan server**
+
+   ```bash
+   php artisan serve
+   ```
+
+7. Buka **http://127.0.0.1:8000** di browser.
+
+## 🗺️ Route
+
+| Method | URL | Fungsi |
+|---|---|---|
+| GET | `/students` | Menampilkan daftar siswa |
+| GET | `/students/create` | Form tambah siswa |
+| POST | `/students` | Menyimpan siswa baru |
+| GET | `/students/{id}/edit` | Form edit siswa |
+| PUT | `/students/{id}` | Memperbarui data siswa |
+| DELETE | `/students/{id}` | Menghapus satu siswa |
+| DELETE | `/students/bulk-destroy` | Menghapus beberapa siswa |
+
+## 🗄️ Struktur Tabel `students`
+
+| Kolom | Tipe | Keterangan |
+|---|---|---|
+| id | bigint | Primary key |
+| nis | string | Unik |
+| nama | string | Nama lengkap |
+| email | string | Opsional, unik |
+| jenis_kelamin | enum (L/P) | Laki-laki / Perempuan |
+| tanggal_lahir | date | Tanggal lahir |
+| kelas | string | Contoh: X IPA 1 |
+| alamat | text | Opsional |
+
+## 📁 File Penting
+
+```
+app/
+├── Http/Controllers/StudentController.php   # Logika CRUD
+└── Models/Student.php                       # Model siswa
+database/migrations/                         # Struktur tabel students
+resources/views/
+├── layouts/app.blade.php                    # Layout utama
+└── students/                                # Halaman index, create, edit
+routes/web.php                               # Daftar route
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+## 👨‍💻 Pembuat
 
-## Contributing
+**Moch Nafis Adhimukti**
+Kelas XI-RPL (Rekayasa Perangkat Lunak)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<div align="center">
+Dibuat dengan ❤️ menggunakan Laravel
+</div>
