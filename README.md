@@ -72,13 +72,13 @@ Aplikasi ini dibuat untuk memudahkan pengelolaan data siswa di sekolah. Data sis
 
    (Di Windows CMD, gunakan `copy .env.example .env`.)
 
-4. **Buat database** bernama `db_siswa` di phpMyAdmin, lalu atur `.env`:
+4. **Buat database** bernama `db_blabla` di phpMyAdmin, lalu atur `.env` (contoh):
 
    ```env
    DB_CONNECTION=mysql
    DB_HOST=127.0.0.1
    DB_PORT=3306
-   DB_DATABASE=db_siswa
+   DB_DATABASE=db_blabla
    DB_USERNAME=root
    DB_PASSWORD=
    ```
